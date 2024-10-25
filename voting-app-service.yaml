@@ -7,11 +7,10 @@ metadata:
     name: voting-service
     app: demo-voting-app
 spec:
-  type: NodePort
+  type: LoadBalancer  # Changed from NodePort to LoadBalancer
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30004
+    - port: 80         # Port exposed by the service
+      targetPort: 80   # Port on the container
   selector:
     name: voting-app-pod
     app: demo-voting-app
